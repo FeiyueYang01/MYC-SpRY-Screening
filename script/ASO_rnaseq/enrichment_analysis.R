@@ -40,25 +40,6 @@ foldchanges <- res_clean$stat	# or log2FoldChange
 names(foldchanges) <- res_clean$ENTREZID
 foldchanges <- sort(foldchanges, decreasing = TRUE)
 
-# Hallmark
-msig_h <- msigdbr(species = "Homo sapiens", category = "H") %>%
-    dplyr::select(gs_name, entrez_gene) %>%
-    dplyr::rename(ont = gs_name, gene = entrez_gene)
-print("msig_h")
-table(msig_h$gene %in% names(foldchanges))
-length(msig_h$gene)
-head(names(foldchanges))
-
-gsea_msig <- GSEA(geneList = foldchanges,
-                  TERM2GENE = msig_h,
-                  pvalueCutoff = 1,
-				  scoreType = "std",
-                  verbose = FALSE)
-
-gsea_df <- as.data.frame(gsea_msig)
-write.table(gsea_df, file = paste0(wdir, "/enrichment_", hour, "h/gsea_msig_H_std.tsv"), sep = "\t", quote = FALSE, row.names = FALSE)
-
-
 # C2
 msig_C2 <- msigdbr(species = "Homo sapiens", category = "C2") %>%
     dplyr::select(gs_name, entrez_gene) %>%

@@ -26,3 +26,8 @@ featureCounts -T 40 -s 2 -p \
 -a /media/scratch/fy2306/genomes/hg38/GENCODE/gencode.v47.annotation.gtf \
 -o /media/scratch/fy2306/projects/base_editing/data/ASO_rnaseq/batch_2/raw_count_matrix.txt \
 /media/protein/fy2306/projects/base_editing/data/ASO_rnaseq/bam/batch_2/*bam
+
+# featureCounts -T 40 -s 2 -p \
+# -a /media/scratch/fy2306/genomes/hg38/MANE/release_1.4/MANE.GRCh38.v1.4.refseq_genomic.gtf \
+# -o /media/scratch/fy2306/projects/base_editing/data/ASO_rnaseq/raw_count_matrix_MANE.txt \
+# /media/protein/fy2306/projects/base_editing/data/ASO_rnaseq/bam/*bam
